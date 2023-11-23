@@ -13,9 +13,9 @@ class OrderStatus(models.Model):
 
     order = models.ForeignKey('order.Order', on_delete=models.CASCADE)
     status = models.PositiveSmallIntegerField(choices=[         #better to use integer than string for filtering and comparision.
-        (COMPLETED, 'Completed'),
-        (PENDING, 'Pending'),
-        (CANCELLED, 'Cancelled'),
+        (COMPLETED, COMPLETED_TEXT),
+        (PENDING, PENDING_TEXT),
+        (CANCELLED, CANCELLED_TEXT),
     ], default=2)               # sot that <2 will be completed and failed, >2 will be pending and cancelled, and != 2 will be final order.
     created_at = models.DateTimeField(auto_now_add=True)
 
